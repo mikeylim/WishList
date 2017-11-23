@@ -25,7 +25,7 @@ def create(request):
 
 def creatWishlist(request):
     if request.method == "POST":
-        wishlist = Wishlist.objects.validate(request.POST)     
+        wishlist = Wishlist.objects.validate(request.POST)
         if wishlist:
             for error in wishlist:
                 messages.add_message(request, messages.INFO, error)
@@ -53,13 +53,13 @@ def addToMyList(request, id):
         return redirect('/wishlist/dashboard')
 
 def removeMyList(request, wishlist_id):
-    try:
-        if request.method == "GET":
-            Wishlist.objects.removeFromList(request.session['user_id'], wishlist_id)
-            return redirect('/wishlist/dashboard')
-    except:
-        print 'Cannot remove from fav list'
+    # try:
+    if request.method == "GET":
+        Wishlist.objects.removeFromList(request.session['user_id'], wishlist_id)
         return redirect('/wishlist/dashboard')
+    # except:
+    #     print 'Cannot remove from list'
+    #     return redirect('/wishlist/dashboard')
 
 def view(request, wishlist_id):
     if 'user_id' not in request.session:

@@ -2,3 +2,53 @@
     margin: 0px;
     padding: 0px;
 }
+
+.wrapper{
+    padding: 5px;
+    border: 3px solid blueviolet;
+    width: 700px;
+}
+
+#header a, h1{
+    display: inline-block;
+}
+#header a{
+    margin-left: 475px;
+    font-size: 20px;
+    background-color: blueviolet;
+    color: gold;
+    text-align: center;
+    border: 2px solid black;
+}
+#your_list{
+    border: 3px solid blueviolet;
+    width: 700px;
+    margin: 30px 0px;
+}
+#other_list{
+    border: 3px solid blueviolet;
+    width: 700px;
+    margin: 30px 0px;
+}
+#add_item{
+    margin-left: 610px;
+    font-size: 20px;
+    background-color: blueviolet;
+    color: gold;
+    text-align: center;
+    border: 2px solid black;
+}
+table th{
+    padding: 5px;
+    background-color: lightgrey;
+}
+table td{
+    border: 1px solid black;
+    padding: 5px;
+}
+table {
+    border: 5px solid black;
+    width: 700px;
+    text-align: center;
+}
+

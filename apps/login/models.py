@@ -20,6 +20,9 @@ class ValidateManager(models.Manager):
             if len(postData['username']) < 3:
                 errorMessages.append("Username has to be at least 3 chracters")
 
+            if User.objects.filter(username=postData['username']).exists():
+                errorMessages.append('The same username exists! Choose a different username')
+
             if postData['username'].isdigit():
                 errorMessages.append('Username name cannot contain any numbers')
 
@@ -45,16 +48,16 @@ class ValidateManager(models.Manager):
 
     def login(self, postData):
         errorMessages = []
-        # try:
-        user = User.objects.get(username=postData['username'])
-        if bcrypt.hashpw(postData['password'].encode(), user.password.encode()) == user.password.encode():
-            return user
-        else:
-            errorMessages.append('Invalid password')
+        try:
+            user = User.objects.get(username=postData['username'])
+            if bcrypt.hashpw(postData['password'].encode(), user.password.encode()) == user.password.encode():
+                return user
+            else:
+                errorMessages.append('Invalid password')
+                return errorMessages
+        except:
+            errorMessages.append('No user registered with that username')
             return errorMessages
-        # except:
-        #     # errorMessages.append('No user registered with that username')
-        #     return errorMessages
 class User(models.Model):
     name = models.CharField(max_length=255)
     username = models.CharField(max_length=255)

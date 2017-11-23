@@ -67,7 +67,7 @@ class WishManager(models.Manager):
             error = "The same list already exists!"
             return error
         except:
-            return this_user.favorites.remove(this_wishlist)
+            return this_user.wishlists.remove(this_wishlist)
         
 
 class Wishlist(models.Model):

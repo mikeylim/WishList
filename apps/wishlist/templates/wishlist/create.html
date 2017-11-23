@@ -3,21 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Create Item</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'wishlist/create.css' %}">
 </head>
 <body>
-    <div class="header">
-        <h1>Create a New Wish List Item</h1>
-        <a href="/wishlist/dashboard">Home</a>
-        <a href="/logout">Logout</a>
+    <div id="wrapper">
+        <div class="header">        
+            <h1>Create a New Wish List Item</h1>
+            <a href="/wishlist/dashboard">Home</a>
+            <a href="/logout">Logout</a>
+        </div>
+        
+        <div class="content">
+            {% if messages %}
+                {% for message in messages %}
+                    <p class="error" style="color:red">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+            <form action="/wishlist/wish_items/creatWishlist" method="post">
+                {% csrf_token %}
+                <label for="item">Item/Product: </label><input type="text" id="item" name="item">
+                <br>
+                <input type="submit" value="Add" id="add">
+            </form>
+        </div>
     </div>
     
-    <div class="content">
-        <form action="/wishlist/wish_items/creatWishlist" method="post">
-            {% csrf_token %}
-            <label for="item">Item/Product</label><input type="text" id="item" name="item">
-            <br>
-            <input type="submit" value="Add">
-        </form>
-    </div>
 </body>
 </html>

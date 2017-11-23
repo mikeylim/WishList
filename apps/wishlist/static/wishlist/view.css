@@ -1,0 +1,17 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+#wrapper{
+    padding: 20px;
+}
+.header h1, a{
+    display: inline-block;    
+    margin-bottom: 40px;
+}
+.header h1{
+    margin-right: 250px;
+}
+#add{
+    margin: 25px 0px 0px 230px;
+}
